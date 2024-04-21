@@ -1,14 +1,13 @@
 from funciones import *
 from generacionDistribuciones import *
+from tablas import *
 
-"""v = generar_dist_uniforme()
-print(v)
-print(len(v))"""
+serie = generar_dist_uniforme()
+print(serie)
 
-w = generar_dist_normal()
-print(w)
-print(len(w))
 
-w = generar_dist_normal()
-print(w)
-print(len(w))
+intervalos = generar_intervalos(serie, 8)
+print(intervalos)
+frec = frecuencia_observada(serie , intervalos)
+print(frec)
+

@@ -29,6 +29,11 @@ def calcular_promedio(v):
 
 
 
+def vector_nulo(numero):
+    v = []
+    for i in range(0, numero):
+        v.append(0)
 
+    return v
 
 
