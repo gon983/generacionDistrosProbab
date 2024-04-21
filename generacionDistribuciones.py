@@ -23,3 +23,27 @@ def generar_dist_exponencial():
 
     return v
 
+
+def generar_dist_normal():
+    cant_n, media, desviacion = pedir_parametros("Ingrese la media: ", "Ingrese la desviacion: ")
+    if cant_n % 2 == 1:
+        n_iteraciones = (cant_n // 2) + 1
+
+    else:
+        n_iteraciones = cant_n // 2
+    v = []
+
+
+    for i in range(0, n_iteraciones):
+        rnd1 = random.random()
+        rnd2 = random.random()
+        x1 = (math.sqrt(-2 * math.log(rnd1, math.e)) * math.cos(2 * math.pi * rnd2)) * desviacion + media
+        v.append(round(x1, ndigits=4))
+
+        if (cant_n % 2 == 1) and i == (n_iteraciones - 1):
+            break
+
+        x2 = (math.sqrt(-2 * math.log(rnd1, math.e)) * math.sin(2 * math.pi * rnd2))* desviacion + media
+        v.append(round(x2, ndigits=4))
+
+    return v

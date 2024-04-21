@@ -5,5 +5,10 @@ from generacionDistribuciones import *
 print(v)
 print(len(v))"""
 
-w = generar_dist_exponencial()
+w = generar_dist_normal()
 print(w)
+print(len(w))
+
+w = generar_dist_normal()
+print(w)
+print(len(w))
