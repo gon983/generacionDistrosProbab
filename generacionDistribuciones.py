@@ -12,8 +12,7 @@ def generar_dist_uniforme():
     return v
 
 
-def generar_dist_exponencial():
-    cant_n_deseados, media = pedir_parametros("Ingrese la media deseada: ")
+def generar_dist_exponencial(cant_n_deseados, media):
     v = []
 
     for i in range(0, cant_n_deseados):
@@ -24,8 +23,7 @@ def generar_dist_exponencial():
     return v
 
 
-def generar_dist_normal():
-    cant_n, media, desviacion = pedir_parametros("Ingrese la media: ", "Ingrese la desviacion: ")
+def generar_dist_normal(cant_n, media, desviacion):
     if cant_n % 2 == 1:
         n_iteraciones = (cant_n // 2) + 1
 

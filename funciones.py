@@ -9,7 +9,7 @@ def validar_entre_nums(li,ls, msj):
 
 
 def pedir_parametros(msj1=None, msj2=None):
-    cant_nums = validar_entre_nums(1, 1000000, "Ingrese la cantidad de numeros que quiera generar (menor al millon)")
+    cant_nums = validar_entre_nums(1, 1000000, "Ingrese la cantidad de numeros que quiera generar (menor al millon): ")
     if msj1 != None and msj2 == None:
         param2 = int(input(msj1))
         return cant_nums, param2
