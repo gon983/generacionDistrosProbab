@@ -11,11 +11,11 @@ def validar_entre_nums(li,ls, msj):
 def pedir_parametros(msj1=None, msj2=None):
     cant_nums = validar_entre_nums(1, 1000000, "Ingrese la cantidad de numeros que quiera generar (menor al millon): ")
     if msj1 != None and msj2 == None:
-        param2 = int(input(msj1))
+        param2 = float(input(msj1))
         return cant_nums, param2
     if msj2 != None:
-        param2 = int(input(msj1))
-        param3 = int(input(msj2))
+        param2 = float(input(msj1))
+        param3 = float(input(msj2))
         return cant_nums, param2, param3
     return cant_nums
 

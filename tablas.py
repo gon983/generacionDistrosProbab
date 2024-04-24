@@ -37,9 +37,9 @@ def frecuencia_observada(serie, intervalos):
 # Y retorna el resultado que le envia esta funcion
 def frecuencia_esperada(distrib, n_muestra, intervalos, parametros):
 
-    if distrib == "1":
+    if distrib == 1:
         return fe_uniforme(n_muestra,len(intervalos))
-    elif distrib == "2":
+    elif distrib == 2:
         return fe_normal(n_muestra, intervalos, *parametros )
     else:
         return fe_exponencial(n_muestra,intervalos, parametros)
@@ -62,7 +62,7 @@ def fe_normal(n, intervalos, *parametros):
         densidad = densidad * (intervalo[1]-intervalo[0])
         
         f_esperada = densidad * n
-        frecuencias.append(f_esperada)
+        frecuencias.append(round(f_esperada, 4))
         
     return frecuencias
 
@@ -78,7 +78,7 @@ def fe_exponencial(n, intervalos, parametros):
         acumulacion = (1 - math.e ** (- (1/media) * intervalo[1])) - (1 - math.e ** (- (1/media) * intervalo[0]))
         
         f_esperada = acumulacion * n
-        frecuencias.append(f_esperada)
+        frecuencias.append(round(f_esperada, 4))
         
     return frecuencias
     
