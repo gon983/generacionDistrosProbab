@@ -37,7 +37,7 @@ frecObservada = frecuencia_observada(serie , intervalos)
 print(frecObservada)
 
 print("\n\nFrecuencias esperadas", "-"*24)
-frecEsperada = frecuencia_esperada(distribucion, serie, frecObservada, intervalos, parametros)
+frecEsperada = frecuencia_esperada(distribucion, len(serie), intervalos, parametros)
 print(frecEsperada)
 
 
