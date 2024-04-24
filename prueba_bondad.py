@@ -6,38 +6,39 @@ def chi_cuadrado(intervalos, fo, fe):
     v = []
     ace = 0
     aco = 0
-    contador = 0
+
     z = 0
-    lim_inferior = None
+    lim_inferior = intervalos[0][0]
     lim_superior = None
     while i < len(intervalos):
         if fe[i] < 5:
-            z = i
-            lim_inferior = intervalos[z][0]
-            while z < len(fe):
-                ace = fe[z] + ace
-                aco = fo[z] + aco
+            lim_inferior = intervalos[i][0]
+            while i < len(intervalos):
+                ace = fe[i] + ace
+                aco = fo[i] + aco
                 if ace >= 5:
-                    lim_superior = intervalos[z][1]
+                    lim_superior = intervalos[i][1]
                     break
-                z = z + 1
-            i = z
+                else:
+                    if i < len(intervalos):
+                        z = i
+                        pass
+                i = i + 1
+
             if ace >= 5:
-               v.append([[lim_inferior, lim_superior], aco, ace, None, None])
+                v.append([[lim_inferior, lim_superior], aco, ace, None, None])
+                lim_inferior = intervalos[i][1]
 
             else:
-               v[len(v) - 1][0] = [lim_inferior, intervalos[i - 1][1]]
-               v[len(v) - 1][1] = v[len(v) - 1][1] + aco
-               v[len(v) - 1][2] = v[len(v) - 1][2] + ace
-
-               contador = contador + 1
+                v[len(v) - 1][0] = [lim_inferior, intervalos[len(intervalos) - 1][1]]
+                v[len(v) - 1][1] = round(v[len(v) - 1][1] + aco, 4)
+                v[len(v) - 1][2] = round(v[len(v) - 1][2] + ace, 4)
 
         else:
             v.append([intervalos[i], fo[i], round(fe[i], 4), None, None])
-            lim_inferior = intervalos[i][0]
+            lim_inferior = intervalos[i][1]
 
-        i = i + 1 + contador
-        contador = 0
+        i = i + 1
         aco = 0
         ace = 0
 
@@ -54,6 +55,10 @@ def chi_cuadrado(intervalos, fo, fe):
         print("-"*40)
         print(v[j])
         j = j + 1
+
+    print("/" * 100)
+    print("Valor del estadístico de prueba: " + str(v[len(v) - 1][4]))
+    print("/" * 100)
     return v
 
 
@@ -86,10 +91,12 @@ def ks(intervalos, fo, fe, N):
         print(v[j])
         print("-"*40)
         j += 1
-    print("-"*50)
+    print("/" * 100)
     print("Valor del estadístico de prueba: " + str(v[len(v) - 1][8]))
+    print("/" * 100)
     return v
 
 
 
-#[150.0321, 150.0371], [150.0371, 150.0421], [150.0421, 150.0471], [150.0471, 150.0521], [150.0521, 150.0571]]
+#[1350.3129, 1440.3337], [1440.3337, 1530.3545], [1530.3545, 1620.3753], [1620.3753, 1710.3961], [1710.3961, 1800.4169], [1800.4169, 1890.4377], [1890.4377, 1980.4585], [1980.4585, 2070.4793]
+#15.1916, 8.3362, 4.5743, 2.5101, 1.3774, 0.7558, 0.4147, 0.2276, 0.1249
