@@ -1,7 +1,7 @@
+from valores import *
 
 #CHI CUADRADO
-
-def chi_cuadrado(intervalos, fo, fe):
+def chi_cuadrado(intervalos, fo, fe, distr):
     i = 0
     v = []
     ace = 0
@@ -56,10 +56,13 @@ def chi_cuadrado(intervalos, fo, fe):
         print(v[j])
         j = j + 1
 
+    calculado = v[len(v) - 1][4]
+    tabulado = chi_tabulado[len(v)-1-distr]
+
     print("/" * 100)
-    print("Valor del estadístico de prueba: " + str(v[len(v) - 1][4]))
-    print("/" * 100)
-    return v
+    print("Valor del estadístico de prueba:", calculado)
+    print("Valor tabulado para un alfa de 0,05:", tabulado)
+    return tabulado >= calculado
 
 
 
@@ -91,12 +94,11 @@ def ks(intervalos, fo, fe, N):
         print(v[j])
         print("-"*40)
         j += 1
+    
+    calculado = v[len(v) - 1][8]
+    tabulado = ks_tabulado[N-1] if N <= 40 else round(1.36 / N ** 0.5, 4)
+
     print("/" * 100)
-    print("Valor del estadístico de prueba: " + str(v[len(v) - 1][8]))
-    print("/" * 100)
-    return v
-
-
-
-#[1350.3129, 1440.3337], [1440.3337, 1530.3545], [1530.3545, 1620.3753], [1620.3753, 1710.3961], [1710.3961, 1800.4169], [1800.4169, 1890.4377], [1890.4377, 1980.4585], [1980.4585, 2070.4793]
-#15.1916, 8.3362, 4.5743, 2.5101, 1.3774, 0.7558, 0.4147, 0.2276, 0.1249
+    print("Valor del estadístico de prueba:", calculado)
+    print("Valor tabulado para un alfa de 0,05:", tabulado)
+    return tabulado >= calculado

@@ -25,7 +25,7 @@ def generar_intervalos(serie, cantidad_intervalos):
     return intervalos
 
 def frecuencia_observada(serie, intervalos):
-    v = vector_nulo(len(intervalos))
+    v = [0] * len(intervalos)
     for i in range(0, len(serie)):
         n = serie[i]
         for j in range(0, len(intervalos)):
@@ -40,9 +40,9 @@ def frecuencia_esperada(distrib, n_muestra, intervalos, parametros):
     if distrib == 1:
         return fe_uniforme(n_muestra,len(intervalos))
     elif distrib == 2:
-        return fe_normal(n_muestra, intervalos, *parametros )
-    else:
         return fe_exponencial(n_muestra,intervalos, parametros)
+    else:
+        return fe_normal(n_muestra, intervalos, *parametros)
     
     
 # Devuelve una lista con las frecuencias esperadas para una distr uniforme
