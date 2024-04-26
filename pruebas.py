@@ -32,7 +32,7 @@ def generar_tabla(serie, distribucion, parametros):
 def generar_histograma(serie, distrib, frecuencia):
     
     #Esto es para que se siga ejecutando el codigo mientras esta la ventana del histograma abierta
-    #plot.ion()
+    plot.ion()
     
     rango = [item for intervalo in intervalos for item in intervalo]
     rangoLabel = [str(el) for el in rango]
